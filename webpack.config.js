@@ -32,11 +32,11 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
-          test: /\.s[ac]ss$/i,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(?:ico|jpe?g|png|gif)$/,
@@ -74,5 +74,12 @@ module.exports = {
     },
   },
 
-  // Set up for styled-components
+  // Set up for styled-components (broken)
+  // externals: {
+  //   'styled-components': {
+  //     commonjs: 'styled-components',
+  //     commonjs2: 'styled-components',
+  //     amd: 'styled-components',
+  //   },
+  // },
 };
