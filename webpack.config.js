@@ -14,7 +14,18 @@ module.exports = {
   devServer: {
     static: { directory: path.resolve(__dirname, 'build') },
     hot: true,
-    port: 3000,
+    proxy: {
+      '/api': {
+        target: {
+          host: '0.0.0.0',
+          protocol: 'https:',
+          port: 8080,
+        },
+        pathRewrite: {
+          '^/api': '',
+        },
+      },
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
