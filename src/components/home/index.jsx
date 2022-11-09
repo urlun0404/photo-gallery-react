@@ -1,144 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
-import SearchBar from './search-bar';
-import Pictures from './pictures';
 import * as s from './styles';
-import * as Img from 'images';
-
-const test_photos = [
-  {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
-    },
-  },
-  {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
-    },
-  },
-  {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
-    },
-  },
-  {
-    photographer: 'Dominika Mazur',
-    src: {
-      original: Img.dominika,
-      large: Img.dominika,
-    },
-  },
-  {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
-    },
-  },
-  {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
-    },
-  },
-  {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
-    },
-  },
-  {
-    photographer: 'Dominika Mazur',
-    src: {
-      original: Img.dominika,
-      large: Img.dominika,
-    },
-  },
-  {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
-    },
-  },
-  {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
-    },
-  },
-  {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
-    },
-  },
-  {
-    photographer: 'Dominika Mazur',
-    src: {
-      original: Img.dominika,
-      large: Img.dominika,
-    },
-  },
-  {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
-    },
-  },
-  {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
-    },
-  },
-  {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
-    },
-  },
-  {
-    photographer: 'Dominika Mazur',
-    src: {
-      original: Img.dominika,
-      large: Img.dominika,
-    },
-  },
-  {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
-    },
-  },
-  {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
-    },
-  },
-  {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
-    },
-  },
-];
+import { useEffect, useState } from 'react';
+import Pictures from './pictures';
+import SearchBar from './search-bar';
+import useFetch from '../../hooks/use-fetch';
 
 const auth = process.env.REACT_APP_PEXELS_API_KEY;
 const overLoad = {
@@ -147,57 +11,38 @@ const overLoad = {
     Accept: 'application/json',
   },
 };
-const PER_PAGE_PHOTO_NUM = 15;
+const PER_PAGE_PHOTO_NUM = 16;
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
-  const [photos, setPhotos] = useState(null);
   const [page, setPage] = useState(1);
-  const [currSearchedPhotos, setCurrSearchedPhotos] = useState('');
-  const initURL = `https://api.pexels.com/v1/curated?page=${page}&per_page=${PER_PAGE_PHOTO_NUM}`;
-  const searchURL = `https://api.pexels.com/v1/search?query=${searchInput}&page=${page}&per_page=${PER_PAGE_PHOTO_NUM}`;
+  const [searchInput, setSearchInput] = useState('');
+  const { isLoading, hasError, photos, fetchData } = useFetch();
 
-  // // Fetch photo data from pexels api
-  const searchPhotos = useCallback(async (url) => {
+  const initSearchUrl = `https://api.pexels.com/v1/curated?page=${page}&per_page=${PER_PAGE_PHOTO_NUM}`;
+
+  // Fetch photo data from pexels api
+  const searchPhotos = (url) => {
     if (url.trim() === '') {
       return;
     }
-    setHasError(false);
-    setIsLoading(true);
-    try {
-      // const response = await fetch(url, overLoad);
-      // const data = await response.json();
-      // setPhotos(data.photos);
-      setPhotos(test_photos);
-      setCurrSearchedPhotos(searchInput);
-    } catch (error) {
-      setHasError(true);
-    }
-    setIsLoading(false);
-  }, []);
-
-  // // // Fetch photo data from clicking "Load More" button
-  const loadMorePictures = async () => {
-    setHasError(false);
-    try {
-      setPage((prevPage) => prevPage + 1);
-      const url =
-        currSearchedPhotos === ''
-          ? `https://api.pexels.com/v1/curated?page=${page}&per_page=${PER_PAGE_PHOTO_NUM}`
-          : `https://api.pexels.com/v1/search?query=${currSearchedPhotos}&page=${page}&per_page=${PER_PAGE_PHOTO_NUM}`;
-      const response = await fetch(url, overLoad);
-      const data = await response.json();
-      setPhotos([...photos, ...data.photos]);
-    } catch (error) {
-      setHasError(true);
-    }
+    fetchData(url, overLoad);
   };
 
-  // Fetch photo data when the page loads up
+  // Fetch photo data from clicking "Load More" button
+  const loadMorePhotos = () => {
+    setPage((prevPage) => prevPage + 1);
+    const currSearch = searchInput.trim();
+    const currSearchUrl =
+      currSearch === ''
+        ? `https://api.pexels.com/v1/curated?page=${page}&per_page=${PER_PAGE_PHOTO_NUM}`
+        : `https://api.pexels.com/v1/search?query=${currSearch}&page=${page}&per_page=${PER_PAGE_PHOTO_NUM}`;
+
+    fetchData(currSearchUrl, overLoad);
+  };
+
+  // Fetch initial photo data when the page loads up
   useEffect(() => {
-    searchPhotos(initURL);
+    searchPhotos(initSearchUrl);
   }, []);
 
   // Clear search bar after searching
@@ -208,7 +53,7 @@ export default function Home() {
   return (
     <s.Home>
       <SearchBar
-        searchPhotos={() => searchPhotos(searchURL)}
+        searchPhotos={() => searchPhotos(currSearchUrl)}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
@@ -216,7 +61,7 @@ export default function Home() {
         isLoading={isLoading}
         hasError={hasError}
         photos={photos}
-        loadMorePictures={loadMorePictures}
+        loadMorePhotos={loadMorePhotos}
       />
     </s.Home>
   );
