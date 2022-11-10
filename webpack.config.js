@@ -27,6 +27,7 @@ module.exports = {
         },
       },
     },
+    historyApiFallback: true,
   },
   plugins: [
     new Dotenv({
