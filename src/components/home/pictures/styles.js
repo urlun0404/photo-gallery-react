@@ -15,9 +15,6 @@ export const Pictures = styled.section`
 `;
 
 export const LoadMoreButton = styled(Button)`
+  margin: 1rem 0;
   font-size: 1.35rem;
-  background-color: #61468a;
-  &:hover {
-    background-color: #baa0e5;
-  }
 `;
