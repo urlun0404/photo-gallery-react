@@ -2,10 +2,13 @@ import * as s from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { photoActions } from 'store/photo-slice';
 import { useState, useEffect } from 'react';
+import useFetch from 'hooks/use-fetch';
+import { OVERLOAD } from 'constants';
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const currentSearch = useSelector((state) => state.photo.currentSearch);
+  const { fetchData } = useFetch();
   const dispatch = useDispatch();
 
   const inputHandler = (event) => {
@@ -18,7 +21,7 @@ export default function SearchBar() {
 
     const searchInputUrl = `https://api.pexels.com/v1/search?query=${searchInput}&page=${1}&per_page=${16}`;
 
-    fetchData(searchInputUrl, overLoad, true);
+    fetchData(searchInputUrl, OVERLOAD, true);
 
     // Clear search bar after searching
     setSearchInput('');
@@ -28,7 +31,6 @@ export default function SearchBar() {
     const dispatchSearchInput = setTimeout(() => {
       if (searchInput.trim() === '' || searchInput === currentSearch) return;
 
-      console.log('DISPATCH!!!!!!!!');
       dispatch(photoActions.setCurrentSearch(searchInput.trim()));
     }, 500);
 
