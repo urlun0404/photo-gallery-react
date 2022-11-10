@@ -27,27 +27,23 @@ export default function Pictures() {
   };
 
   return (
-    <>
-      <s.Pictures>
-        {isLoading && <h3>Loading...</h3>}
-        {!isLoading && hasError && <h3>Something goes wrong</h3>}
-        {!isLoading &&
-          !hasError &&
-          photo.photos &&
-          photo.photos.map((photo) => {
-            return <Picture key={photo.id} className="picture" photo={photo} />;
-          })}
-      </s.Pictures>
-      {!isLoading && !hasError && (
-        <s.LoadMoreButton
-          onClick={() => {
-            console.log('click load more');
-            loadMorePhotos();
-          }}
-        >
-          Load More
-        </s.LoadMoreButton>
+    <s.Pictures>
+      {isLoading && <h3>Loading...</h3>}
+      {!isLoading && hasError ? (
+        <h3>Opps! Something Goes Wrong!</h3>
+      ) : (
+        <>
+          {photo.photos &&
+            photo.photos.map((photo) => {
+              return (
+                <Picture key={photo.id} className="picture" photo={photo} />
+              );
+            })}
+          <s.LoadMoreButton onClick={() => loadMorePhotos()}>
+            Load More
+          </s.LoadMoreButton>
+        </>
       )}
-    </>
+    </s.Pictures>
   );
 }
