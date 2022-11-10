@@ -1,10 +1,26 @@
+import { Route, Routes } from 'react-router-dom';
+import About from 'components/about';
 import GlobalStyles from 'styles/global';
 import Home from 'components/home';
-import About from 'components/about';
 import NavBar from 'components/nav-bar';
-import { Routes, Route } from 'react-router-dom';
+import { OVERLOAD } from 'constants';
+import { useEffect } from 'react';
+import useFetch from 'hooks/use-fetch';
+
+let init = false;
+
+const initialSearchUrl = `https://api.pexels.com/v1/curated?page=${1}&per_page=${16}`;
 
 export default function App() {
+  const { fetchData } = useFetch();
+
+  // Fetch initial photo data when the page loads up
+  useEffect(() => {
+    if (init) return;
+    init = true;
+    fetchData(initialSearchUrl, OVERLOAD);
+  }, []);
+
   return (
     <>
       <GlobalStyles />
