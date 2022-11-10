@@ -87,6 +87,10 @@ module.exports = {
     alias: {
       styles: path.resolve(__dirname, './src/styles'),
       components: path.resolve(__dirname, './src/components'),
+      images: path.resolve(__dirname, './src/assets/images'),
+      store: path.resolve(__dirname, './src/store'),
+      hooks: path.resolve(__dirname, './src/hooks'),
+      constants: path.resolve(__dirname, './src/constants.js'),
     },
   },
 

@@ -1,5 +1,8 @@
 import * as Img from 'images';
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { photoActions } from 'store/photo-slice';
 
 const test_photos = [
   {
@@ -114,43 +117,26 @@ const test_photos = [
       large: Img.dominika,
     },
   },
-  {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
-    },
-  },
-  {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
-    },
-  },
-  {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
-    },
-  },
 ];
 
 export default function useFetch() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [photos, setPhotos] = useState([]);
+  const photo = useSelector((state) => state.photo);
+  const dispatch = useDispatch();
 
   const fetchData = useCallback(async (url, overLoad) => {
     setHasError(false);
     setIsLoading(true);
+
+    console.log(`CURR SEARCH URL:`, photo.currentSearchUrl);
     try {
-      // const response = await fetch(url, overLoad);
-      // const data = await response.json();
-      // setPhotos([...photos, ...data.photos]);
-      setPhotos(test_photos);
+      const response = await fetch(url, overLoad);
+      const data = await response.json();
+      dispatch(photoActions.setPhotos([...photos, ...data.photos]));
+      // dispatch(photoActions.setPhotos(test_photos));
     } catch (error) {
+      console.error(error);
       setHasError(true);
     }
     setIsLoading(false);
@@ -159,7 +145,6 @@ export default function useFetch() {
   return {
     isLoading,
     hasError,
-    photos,
     fetchData,
   };
 }
