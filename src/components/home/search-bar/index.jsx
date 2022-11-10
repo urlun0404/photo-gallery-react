@@ -17,8 +17,12 @@ export default function SearchBar() {
 
   const searchPhotos = (event) => {
     event.preventDefault();
-    if (searchInput == '' || searchInput === currentSearch);
+    if (searchInput == '' || searchInput === currentSearch) return;
 
+    // Record current searched result
+    dispatch(photoActions.setCurrentSearch(searchInput));
+
+    // Fetch data from new searched result
     const searchInputUrl = `https://api.pexels.com/v1/search?query=${searchInput}&page=${1}&per_page=${16}`;
 
     fetchData(searchInputUrl, OVERLOAD, true);
