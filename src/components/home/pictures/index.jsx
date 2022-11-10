@@ -14,7 +14,6 @@ export default function Pictures() {
 
   // Fetch photo data from clicking "Load More" button
   const loadMorePhotos = () => {
-    console.log('call load more');
     const newPage = photo.page + 1;
     const currSearch = photo.currentSearch;
     const currSearchUrl =
