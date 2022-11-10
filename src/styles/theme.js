@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   breakpoints: {
     $sm: '480px',
     $md: '640px',
@@ -29,3 +29,5 @@ export const theme = {
   },
   colors: {},
 };
+
+export default theme;

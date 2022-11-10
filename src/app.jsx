@@ -6,6 +6,8 @@ import NavBar from 'components/nav-bar';
 import { OVERLOAD } from 'constants';
 import { useEffect } from 'react';
 import useFetch from 'hooks/use-fetch';
+import { ThemeProvider } from 'styled-components';
+import theme from 'styles/theme';
 
 let init = false;
 
@@ -24,11 +26,13 @@ export default function App() {
   return (
     <>
       <GlobalStyles />
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
+      <ThemeProvider theme={theme}>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </ThemeProvider>
     </>
   );
 }

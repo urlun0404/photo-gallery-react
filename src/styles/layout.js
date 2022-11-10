@@ -20,8 +20,8 @@ export const Button = styled.button`
   margin: 0.5rem 0;
   font-weight: bolder;
   color: #ffffff;
-  background-color: #baa0e5;
-  border-radius: 8px;
+  background-color: #959595;
+  border-radius: 6px;
 
   font-size: 1rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);

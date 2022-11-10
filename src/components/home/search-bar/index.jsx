@@ -14,7 +14,7 @@ export default function SearchBar() {
 
   const searchPhotos = (event) => {
     event.preventDefault();
-    if (searchInput == '' || searchInput === currentSearch) return;
+    if (searchInput == '' || searchInput === currentSearch);
 
     const searchInputUrl = `https://api.pexels.com/v1/search?query=${searchInput}&page=${1}&per_page=${16}`;
 
@@ -40,7 +40,12 @@ export default function SearchBar() {
 
   return (
     <s.Search>
-      <s.SearchInput type="text" value={searchInput} onChange={inputHandler} />
+      <s.SearchInput
+        type="text"
+        value={searchInput}
+        onChange={inputHandler}
+        className={`${searchInput.trim() !== '' ? 'isActive' : 'isInvalid'}`}
+      />
       <s.SearchButton onClick={searchPhotos}>Search</s.SearchButton>
     </s.Search>
   );

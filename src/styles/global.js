@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Josefin+Sans:wght@300&family=Raleway:wght@400;500&family=Roboto:wght@300&display=swap');
+  /* @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Josefin+Sans:wght@300&family=Raleway:wght@400;500&family=Roboto:wght@300&display=swap'); */
 
   * {
     padding: 0;
