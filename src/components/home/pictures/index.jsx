@@ -39,9 +39,7 @@ export default function Pictures() {
         )}
       </s.Pictures>
       {!isLoading && !hasError && (
-        <s.LoadMoreButton onClick={() => loadMorePhotos()}>
-          Load More
-        </s.LoadMoreButton>
+        <s.LoadMoreButton onClick={loadMorePhotos}>Load More</s.LoadMoreButton>
       )}
     </s.Container>
   );

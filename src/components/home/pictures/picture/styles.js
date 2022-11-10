@@ -2,11 +2,8 @@ import styled from 'styled-components';
 import { Card } from 'styles/layout';
 
 export const Picture = styled(Card)`
-  min-width: 250px;
-  min-height: 300px;
-  width: 15%;
-  max-width: 300px;
-  max-height: 450px;
+  width: 250px;
+  height: 350px;
   margin: 1rem;
   padding: 1.25rem 0.5rem;
 `;
