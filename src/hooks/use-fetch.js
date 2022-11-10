@@ -122,18 +122,22 @@ const test_photos = [
 export default function useFetch() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const photo = useSelector((state) => state.photo);
+  const currentPhotos = useSelector((state) => state.photo.photos);
   const dispatch = useDispatch();
 
-  const fetchData = useCallback(async (url, overLoad) => {
+  const fetchData = useCallback(async (url, overLoad, isNewSearch = false) => {
     setHasError(false);
     setIsLoading(true);
 
-    console.log(`CURR SEARCH URL:`, photo.currentSearchUrl);
     try {
       const response = await fetch(url, overLoad);
       const data = await response.json();
-      dispatch(photoActions.setPhotos([...photos, ...data.photos]));
+      if (isNewSearch) {
+        dispatch(photoActions.setPhotos([...data.photos]));
+      } else {
+        dispatch(photoActions.setPhotos([...currentPhotos, ...data.photos]));
+      }
+
       // dispatch(photoActions.setPhotos(test_photos));
     } catch (error) {
       console.error(error);
