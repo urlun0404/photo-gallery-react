@@ -5,9 +5,7 @@ export const Search = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 8vh;
-  padding: 1rem 0;
-  margin: 3rem 0;
+  margin: 2rem 0;
 
   input,
   button {

@@ -26,7 +26,7 @@ export default function Pictures() {
   };
 
   return (
-    <>
+    <s.Container>
       <s.Pictures>
         {isLoading && <h3>Loading...</h3>}
         {!isLoading && hasError ? (
@@ -43,6 +43,6 @@ export default function Pictures() {
           Load More
         </s.LoadMoreButton>
       )}
-    </>
+    </s.Container>
   );
 }

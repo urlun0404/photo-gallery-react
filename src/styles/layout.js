@@ -1,20 +1,5 @@
 import styled from 'styled-components';
 
-export const Header = styled.header`
-  padding: 1rem 2rem;
-  text-align: center;
-`;
-
-export const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-`;
-
 export const Button = styled.button`
   padding: 0.75rem;
   margin: 0.5rem 0;

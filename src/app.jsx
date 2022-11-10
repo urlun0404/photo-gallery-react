@@ -1,12 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
-import About from 'components/about';
-import GlobalStyles from 'styles/global';
-import Home from 'components/home';
-import NavBar from 'components/nav-bar';
-import { OVERLOAD } from 'constants';
 import { useEffect } from 'react';
 import useFetch from 'hooks/use-fetch';
+import { OVERLOAD } from 'constants';
 import { ThemeProvider } from 'styled-components';
+import { Route, Routes } from 'react-router-dom';
+import GlobalStyles from 'styles/global';
+import HomePage from 'pages/home';
+import AboutPage from 'pages/about';
 import theme from 'styles/theme';
 
 let init = false;
@@ -27,10 +26,9 @@ export default function App() {
     <>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </ThemeProvider>
     </>
