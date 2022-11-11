@@ -26,7 +26,9 @@ export default function SearchBar() {
     dispatch(photoActions.setCurrentSearch(searchInput));
 
     // Fetch data from new searched result
-    const searchInputUrl = `${PIXABAY_ENDPOINT}&q=${searchInput}&page=${1}&per_page=${15}`;
+    const searchInputUrl = `${PIXABAY_ENDPOINT}&q=${searchInput}&page=${1}&per_page=${
+      photo.perPagePhotoNum
+    }`;
 
     fetchData(searchInputUrl, OVERLOAD, true);
 

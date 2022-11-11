@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   photos: [],
   page: 1,
+  perPagePhotoNum: 15,
   currentSearch: '',
 };
 
@@ -12,6 +13,10 @@ const photoSlice = createSlice({
   reducers: {
     setPage(state, action) {
       state.page = action.payload;
+    },
+
+    setPerPagePhotoNum(state, action) {
+      state.perPagePhotoNum = action.payload;
     },
 
     setCurrentSearch(state, action) {

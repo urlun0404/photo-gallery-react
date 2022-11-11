@@ -12,14 +12,29 @@ export default function Pictures() {
   const { isLoading, hasError, fetchData } = useFetch();
   const photo = useSelector((state) => state.photo);
 
+  const selectPerPagePhotoNum = (event) => {
+    event.preventDefault();
+    const perPagePhotoNum = event.target.value;
+    dispatch(photoActions.setPerPagePhotoNum(perPagePhotoNum));
+
+    const currSearch = photo.currentSearch;
+    const currSearchUrl =
+      currSearch === ''
+        ? `${PIXABAY_ENDPOINT}&page=${photo.page}&per_page=${perPagePhotoNum}`
+        : `${PIXABAY_ENDPOINT}&q=${currSearch}&page=${photo.page}&per_page=${perPagePhotoNum}`;
+
+    // Reload page
+    fetchData(currSearchUrl, OVERLOAD);
+  };
+
   // Fetch photo data from clicking "Load More" button
   const loadMorePhotos = () => {
     const newPage = photo.page + 1;
     const currSearch = photo.currentSearch;
     const currSearchUrl =
       currSearch === ''
-        ? `${PIXABAY_ENDPOINT}&page=${newPage}&per_page=${15}`
-        : `${PIXABAY_ENDPOINT}&q=${currSearch}&page=${newPage}&per_page=${15}`;
+        ? `${PIXABAY_ENDPOINT}&page=${newPage}&per_page=${photo.perPagePhotoNum}`
+        : `${PIXABAY_ENDPOINT}&q=${currSearch}&page=${newPage}&per_page=${photo.perPagePhotoNum}`;
 
     dispatch(photoActions.setPage(newPage));
     fetchData(currSearchUrl, OVERLOAD);
@@ -27,6 +42,15 @@ export default function Pictures() {
 
   return (
     <s.Container>
+      <s.SelectPerPageNum>
+        <label htmlFor="select-photo-num">
+          Show the Number of Photos Per Page:
+        </label>
+        <select name="select-photo-num" onChange={selectPerPagePhotoNum}>
+          <option value={15}>15</option>
+          <option value={30}>30</option>
+        </select>
+      </s.SelectPerPageNum>
       <s.Pictures>
         {isLoading && <h3>Loading...</h3>}
         {!isLoading && hasError ? (
