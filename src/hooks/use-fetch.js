@@ -12,6 +12,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -20,6 +21,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -28,6 +30,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Dominika Mazur',
@@ -36,6 +39,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -44,6 +48,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -52,6 +57,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -60,6 +66,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Dominika Mazur',
@@ -68,6 +75,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -76,6 +84,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -84,6 +93,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -92,6 +102,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Dominika Mazur',
@@ -100,6 +111,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -108,6 +120,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -116,6 +129,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Céline',
@@ -124,6 +138,7 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
   {
     user: 'Dominika Mazur',
@@ -132,30 +147,34 @@ const test_photos = [
     views: 25,
     likes: 100,
     downloads: 100,
+    tags: 'a, b, c',
   },
 ];
 
 export default function useFetch() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const currentPhotos = useSelector((state) => state.photo.photos);
   const dispatch = useDispatch();
 
   const fetchData = useCallback(async (url, overLoad, isNewSearch = false) => {
     setHasError(false);
     setIsLoading(true);
-
     try {
       const response = await fetch(url, overLoad);
       const data = await response.json();
-      if (isNewSearch) {
-        dispatch(photoActions.setPhotos(data['hits']));
-      } else {
-        dispatch(photoActions.setPhotos([...currentPhotos, ...data['hits']]));
-      }
+      dispatch(
+        photoActions.setPhotos({
+          isNewSearch,
+          newPhotos: data['hits'],
+        }),
+      );
       if (!response.ok) throw new Error(response);
-
-      // dispatch(photoActions.setPhotos(test_photos));
+      // dispatch(
+      //   photoActions.setPhotos({
+      //     isNewSearch,
+      //     newPhotos: test_photos,
+      //   }),
+      // );
     } catch (err) {
       console.error(err);
       setHasError(true);

@@ -1,13 +1,13 @@
 import * as s from './styles';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { OVERLOAD } from 'constants';
+import { PIXABAY_ENDPOINT } from 'constants';
 import Picture from './picture';
 import { photoActions } from 'store/photo-slice';
-import { useDispatch } from 'react-redux';
 import useFetch from 'hooks/use-fetch';
-import { useSelector } from 'react-redux';
-import { PIXABAY_ENDPOINT } from 'constants';
 
-export default function Pictures() {
+const Pictures = React.memo(function () {
   const dispatch = useDispatch();
   const { isLoading, hasError, fetchData } = useFetch();
   const photo = useSelector((state) => state.photo);
@@ -24,13 +24,15 @@ export default function Pictures() {
         : `${PIXABAY_ENDPOINT}&q=${currSearch}&page=${photo.page}&per_page=${perPagePhotoNum}`;
 
     // Reload page
-    fetchData(currSearchUrl, OVERLOAD);
+    fetchData(currSearchUrl, OVERLOAD, true);
   };
 
   // Fetch photo data from clicking "Load More" button
-  const loadMorePhotos = () => {
+  const loadMorePhotos = (event) => {
+    event.preventDefault();
     const newPage = photo.page + 1;
     const currSearch = photo.currentSearch;
+
     const currSearchUrl =
       currSearch === ''
         ? `${PIXABAY_ENDPOINT}&page=${newPage}&per_page=${photo.perPagePhotoNum}`
@@ -57,8 +59,14 @@ export default function Pictures() {
           <h3>Opps! Something Goes Wrong!</h3>
         ) : (
           photo.photos &&
-          photo.photos.map((photo) => {
-            return <Picture key={photo.id} className="picture" photo={photo} />;
+          photo.photos.map((photo, index) => {
+            return (
+              <Picture
+                key={photo.id || index}
+                className="picture"
+                photo={photo}
+              />
+            );
           })
         )}
       </s.Pictures>
@@ -67,4 +75,6 @@ export default function Pictures() {
       )}
     </s.Container>
   );
-}
+});
+
+export default Pictures;

@@ -8,7 +8,7 @@ import { OVERLOAD } from 'constants';
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
-  const currentSearch = useSelector((state) => state.photo.currentSearch);
+  const photo = useSelector((state) => state.photo);
   const { fetchData } = useFetch();
   const dispatch = useDispatch();
 
@@ -18,9 +18,7 @@ export default function SearchBar() {
 
   const searchPhotos = (event) => {
     event.preventDefault();
-    if (searchInput == '' || searchInput === currentSearch) return;
-
-    console.log(`click search: ${searchInput}`);
+    if (searchInput == '' || searchInput === photo.currentSearch) return;
 
     // Record current searched result
     dispatch(photoActions.setCurrentSearch(searchInput));
@@ -38,7 +36,8 @@ export default function SearchBar() {
 
   useEffect(() => {
     const dispatchSearchInput = setTimeout(() => {
-      if (searchInput.trim() === '' || searchInput === currentSearch) return;
+      if (searchInput.trim() === '' || searchInput === photo.currentSearch)
+        return;
 
       dispatch(photoActions.setCurrentSearch(searchInput.trim()));
     }, 500);

@@ -24,7 +24,11 @@ const photoSlice = createSlice({
     },
 
     setPhotos(state, action) {
-      state.photos = action.payload;
+      if (action.payload.isNewSearch) {
+        state.photos = [...action.payload.newPhotos];
+      } else {
+        state.photos = [...state.photos, ...action.payload.newPhotos];
+      }
     },
 
     searchPhotos(state, action) {},

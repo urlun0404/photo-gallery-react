@@ -23,7 +23,7 @@ export default function App() {
     try {
       if (init) return;
       init = true;
-      fetchData(initialSearchUrl, OVERLOAD);
+      fetchData(initialSearchUrl, OVERLOAD, true);
     } catch (err) {
       setError(err);
     }
