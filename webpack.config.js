@@ -11,6 +11,7 @@ module.exports = {
     filename: '[name].[contenthash].js',
     assetModuleFilename: '[name][ext]',
     clean: true,
+    publicPath: '/',
   },
   devServer: {
     static: { directory: path.resolve(__dirname, 'build') },

@@ -1,9 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import AboutPage from 'pages/about';
 import ErrorPage from 'pages/error';
+import PictureDetailsPage from 'pages/picture-details';
 import GlobalStyles from 'styles/global';
 import HomePage from 'pages/home';
+import Layout from 'components/layout';
 import { OVERLOAD } from 'constants';
 import { PIXABAY_ENDPOINT } from 'constants';
 import { ThemeProvider } from 'styled-components';
@@ -33,11 +35,19 @@ export default function App() {
     <>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Navigate to="/pictures" replace />} />
+              <Route path="pictures">
+                <Route index element={<HomePage />} />
+                <Route path=":pictureId" element={<PictureDetailsPage />} />
+              </Route>
+              <Route path="about" element={<AboutPage />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Route>
+          </Routes>
+        </Layout>
       </ThemeProvider>
     </>
   );
