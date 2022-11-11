@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Card } from 'styles/layout';
 
 export const Picture = styled(Card)`
-  width: 260px;
+  width: 270px;
   height: 380px;
   margin: 1rem;
   padding: 1.25rem 0.5rem;
@@ -10,7 +10,7 @@ export const Picture = styled(Card)`
 
 export const ImageWrapper = styled.figure`
   width: 100%;
-  height: 60%;
+  height: 70%;
   margin: 0 auto;
   overflow: hidden;
 `;
@@ -29,19 +29,25 @@ export const Image = styled.img`
   }
 `;
 
-export const TextContainer = styled.div`
+export const TextContainer = styled.ul`
   margin: 0.5rem auto;
+  font-size: ${(props) => props.theme.fontSizes.$sm};
 
-  p {
+  li {
     padding: 0.25rem 0.75rem;
+  }
+
+  #likes {
+    font-weight: ${(props) => props.theme.fontWeights.bold};
+    color: #959595;
   }
 `;
 
 export const DownloadButton = styled.button`
-  font-size: 1rem;
-  font-weight: 700;
+  margin: 0 0.25rem;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
   text-decoration: underline;
-  transition: all ease-in 0.15s;
+  transition: all 0.1s ease-in;
 
   &:hover {
     color: #e60000;

@@ -1,14 +1,15 @@
 import * as s from './styles';
 
-const downloadPhoto = async function (url) {
+const downloadPhoto = async function (event, url) {
+  event.preventDefault();
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(response);
-    const urlParser = new URL(url);
-    const fileName = urlParser.pathname.split('/').pop();
     const blob = await response.blob();
     const blobURL = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
+    const fileName = new URL(url).pathname.split('/').pop();
+
     link.href = blobURL;
     link.setAttribute('download', fileName);
     document.body.appendChild(link);
@@ -23,15 +24,17 @@ export default function Picture({ photo }) {
   return (
     <s.Picture>
       <s.ImageWrapper className="card">
-        <s.Image src={photo.urls.small} alt={photo.alt_description} />
+        <s.Image src={photo.webformatURL} alt="" />
       </s.ImageWrapper>
       <s.TextContainer>
         <p>
-          Photo by <strong>{photo.user.name}</strong>
+          Photo by <strong>{photo.user}</strong>
         </p>
         <p>
           Download Original Photo:
-          <s.DownloadButton onClick={() => downloadPhoto(photo.urls.raw)}>
+          <s.DownloadButton
+            onClick={(event) => downloadPhoto(event, photo.largeImageURL)}
+          >
             Here
           </s.DownloadButton>
         </p>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { photoActions } from 'store/photo-slice';
 import { useState, useEffect } from 'react';
 import useFetch from 'hooks/use-fetch';
+import { PIXABAY_ENDPOINT } from 'constants';
 import { OVERLOAD } from 'constants';
 
 export default function SearchBar() {
@@ -19,11 +20,13 @@ export default function SearchBar() {
     event.preventDefault();
     if (searchInput == '' || searchInput === currentSearch) return;
 
+    console.log(`click search: ${searchInput}`);
+
     // Record current searched result
     dispatch(photoActions.setCurrentSearch(searchInput));
 
     // Fetch data from new searched result
-    const searchInputUrl = `https://api.unsplash.com/search/photos?query=${searchInput}&page=${1}&per_page=${16}`;
+    const searchInputUrl = `${PIXABAY_ENDPOINT}&q=${searchInput}&page=${1}&per_page=${15}`;
 
     fetchData(searchInputUrl, OVERLOAD, true);
 

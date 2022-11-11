@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react';
-import useFetch from 'hooks/use-fetch';
-import { OVERLOAD } from 'constants';
-import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
-import GlobalStyles from 'styles/global';
-import HomePage from 'pages/home';
+import { useEffect, useState } from 'react';
 import AboutPage from 'pages/about';
 import ErrorPage from 'pages/error';
+import GlobalStyles from 'styles/global';
+import HomePage from 'pages/home';
+import { OVERLOAD } from 'constants';
+import { PIXABAY_ENDPOINT } from 'constants';
+import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
+import useFetch from 'hooks/use-fetch';
 
 let init = false;
 
-const initialSearchUrl = `https://api.unsplash.com/photos?page=${1}&per_page=${16}`;
+const initialSearchUrl = `${PIXABAY_ENDPOINT}&page=${1}&per_page=${15}`;
 
 export default function App() {
   const { fetchData } = useFetch();

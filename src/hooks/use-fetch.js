@@ -6,148 +6,132 @@ import { photoActions } from 'store/photo-slice';
 
 const test_photos = [
   {
-    user: {
-      name: 'Jessika Arraes',
-    },
-    urls: {
-      small: Img.jessika,
-      download_location: Img.jessika,
-    },
+    user: 'Céline',
+    webformatURL: Img.jessika,
+    largeImageURL: Img.jessika,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Harper Sunday',
-    },
-    urls: {
-      small: Img.harper,
-      download_location: Img.harper,
-    },
+    user: 'Céline',
+    webformatURL: Img.harper,
+    largeImageURL: Img.harper,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Céline',
-    },
-    urls: {
-      small: Img.céline,
-      download_location: Img.céline,
-    },
+    user: 'Céline',
+    webformatURL: Img.céline,
+    largeImageURL: Img.céline,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Dominika Mazur',
-    },
-    urls: {
-      small: Img.dominika,
-      download_location: Img.dominika,
-    },
+    user: 'Dominika Mazur',
+    webformatURL: Img.dominika,
+    largeImageURL: Img.dominika,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Jessika Arraes',
-    },
-    urls: {
-      small: Img.jessika,
-      download_location: Img.jessika,
-    },
+    user: 'Céline',
+    webformatURL: Img.jessika,
+    largeImageURL: Img.jessika,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Harper Sunday',
-    },
-    urls: {
-      small: Img.harper,
-      download_location: Img.harper,
-    },
+    user: 'Céline',
+    webformatURL: Img.harper,
+    largeImageURL: Img.harper,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Céline',
-    },
-    urls: {
-      small: Img.céline,
-      download_location: Img.céline,
-    },
+    user: 'Céline',
+    webformatURL: Img.céline,
+    largeImageURL: Img.céline,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Dominika Mazur',
-    },
-    urls: {
-      small: Img.dominika,
-      download_location: Img.dominika,
-    },
+    user: 'Dominika Mazur',
+    webformatURL: Img.dominika,
+    largeImageURL: Img.dominika,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Jessika Arraes',
-    },
-    urls: {
-      small: Img.jessika,
-      download_location: Img.jessika,
-    },
+    user: 'Céline',
+    webformatURL: Img.jessika,
+    largeImageURL: Img.jessika,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Harper Sunday',
-    },
-    urls: {
-      small: Img.harper,
-      download_location: Img.harper,
-    },
+    user: 'Céline',
+    webformatURL: Img.harper,
+    largeImageURL: Img.harper,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Céline',
-    },
-    urls: {
-      small: Img.céline,
-      download_location: Img.céline,
-    },
+    user: 'Céline',
+    webformatURL: Img.céline,
+    largeImageURL: Img.céline,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Dominika Mazur',
-    },
-    urls: {
-      small: Img.dominika,
-      download_location: Img.dominika,
-    },
+    user: 'Dominika Mazur',
+    webformatURL: Img.dominika,
+    largeImageURL: Img.dominika,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Jessika Arraes',
-    },
-    urls: {
-      small: Img.jessika,
-      download_location: Img.jessika,
-    },
+    user: 'Céline',
+    webformatURL: Img.jessika,
+    largeImageURL: Img.jessika,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Harper Sunday',
-    },
-    urls: {
-      small: Img.harper,
-      download_location: Img.harper,
-    },
+    user: 'Céline',
+    webformatURL: Img.harper,
+    largeImageURL: Img.harper,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Céline',
-    },
-    urls: {
-      small: Img.céline,
-      download_location: Img.céline,
-    },
+    user: 'Céline',
+    webformatURL: Img.céline,
+    largeImageURL: Img.céline,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
   {
-    user: {
-      name: 'Dominika Mazur',
-    },
-    urls: {
-      small: Img.dominika,
-      download_location: Img.dominika,
-    },
+    user: 'Dominika Mazur',
+    webformatURL: Img.dominika,
+    largeImageURL: Img.dominika,
+    views: 25,
+    likes: 100,
+    downloads: 100,
   },
 ];
 
@@ -165,9 +149,9 @@ export default function useFetch() {
       const response = await fetch(url, overLoad);
       const data = await response.json();
       if (isNewSearch) {
-        dispatch(photoActions.setPhotos([...data['results']]));
+        dispatch(photoActions.setPhotos(data['hits']));
       } else {
-        dispatch(photoActions.setPhotos([...currentPhotos, ...data]));
+        dispatch(photoActions.setPhotos([...currentPhotos, ...data['hits']]));
       }
       if (!response.ok) throw new Error(response);
 

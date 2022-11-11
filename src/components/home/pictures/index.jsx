@@ -5,7 +5,7 @@ import { photoActions } from 'store/photo-slice';
 import { useDispatch } from 'react-redux';
 import useFetch from 'hooks/use-fetch';
 import { useSelector } from 'react-redux';
-import { PER_PAGE_PHOTO_NUM } from 'constants';
+import { PIXABAY_ENDPOINT } from 'constants';
 
 export default function Pictures() {
   const dispatch = useDispatch();
@@ -18,8 +18,8 @@ export default function Pictures() {
     const currSearch = photo.currentSearch;
     const currSearchUrl =
       currSearch === ''
-        ? `https://api.unsplash.com/photos?page=${newPage}&per_page=${16}`
-        : `https://api.unsplash.com/search/photos?query=${currSearch}&page=${newPage}&per_page=${16}`;
+        ? `${PIXABAY_ENDPOINT}&page=${newPage}&per_page=${15}`
+        : `${PIXABAY_ENDPOINT}&q=${currSearch}&page=${newPage}&per_page=${15}`;
 
     dispatch(photoActions.setPage(newPage));
     fetchData(currSearchUrl, OVERLOAD);
