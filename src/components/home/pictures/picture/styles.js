@@ -2,22 +2,24 @@ import styled from 'styled-components';
 import { Card } from 'styles/layout';
 
 export const Picture = styled(Card)`
-  width: 250px;
-  height: 350px;
+  width: 260px;
+  height: 380px;
   margin: 1rem;
   padding: 1.25rem 0.5rem;
 `;
 
 export const ImageWrapper = styled.figure`
-  height: 70%;
-  max-height: 260px;
+  width: 100%;
+  height: 60%;
   margin: 0 auto;
   overflow: hidden;
 `;
 
 export const Image = styled.img`
+  display: block;
   width: 100%;
   height: 100%;
+  margin: 0 auto;
   object-fit: contain;
   object-position: center;
   transition: all 0.3s ease;
