@@ -23,7 +23,7 @@ export default function SearchBar() {
     dispatch(photoActions.setCurrentSearch(searchInput));
 
     // Fetch data from new searched result
-    const searchInputUrl = `https://api.pexels.com/v1/search?query=${searchInput}&page=${1}&per_page=${16}`;
+    const searchInputUrl = `https://api.unsplash.com/search/photos?query=${searchInput}&page=${1}&per_page=${16}`;
 
     fetchData(searchInputUrl, OVERLOAD, true);
 

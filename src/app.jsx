@@ -11,7 +11,7 @@ import theme from 'styles/theme';
 
 let init = false;
 
-const initialSearchUrl = `https://api.pexels.com/v1/curated?page=${1}&per_page=${16}`;
+const initialSearchUrl = `https://api.unsplash.com/photos?page=${1}&per_page=${16}`;
 
 export default function App() {
   const { fetchData } = useFetch();

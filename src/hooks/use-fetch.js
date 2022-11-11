@@ -6,115 +6,147 @@ import { photoActions } from 'store/photo-slice';
 
 const test_photos = [
   {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
+    user: {
+      name: 'Jessika Arraes',
+    },
+    urls: {
+      small: Img.jessika,
+      download_location: Img.jessika,
     },
   },
   {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
+    user: {
+      name: 'Harper Sunday',
+    },
+    urls: {
+      small: Img.harper,
+      download_location: Img.harper,
     },
   },
   {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
+    user: {
+      name: 'Céline',
+    },
+    urls: {
+      small: Img.céline,
+      download_location: Img.céline,
     },
   },
   {
-    photographer: 'Dominika Mazur',
-    src: {
-      original: Img.dominika,
-      large: Img.dominika,
+    user: {
+      name: 'Dominika Mazur',
+    },
+    urls: {
+      small: Img.dominika,
+      download_location: Img.dominika,
     },
   },
   {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
+    user: {
+      name: 'Jessika Arraes',
+    },
+    urls: {
+      small: Img.jessika,
+      download_location: Img.jessika,
     },
   },
   {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
+    user: {
+      name: 'Harper Sunday',
+    },
+    urls: {
+      small: Img.harper,
+      download_location: Img.harper,
     },
   },
   {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
+    user: {
+      name: 'Céline',
+    },
+    urls: {
+      small: Img.céline,
+      download_location: Img.céline,
     },
   },
   {
-    photographer: 'Dominika Mazur',
-    src: {
-      original: Img.dominika,
-      large: Img.dominika,
+    user: {
+      name: 'Dominika Mazur',
+    },
+    urls: {
+      small: Img.dominika,
+      download_location: Img.dominika,
     },
   },
   {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
+    user: {
+      name: 'Jessika Arraes',
+    },
+    urls: {
+      small: Img.jessika,
+      download_location: Img.jessika,
     },
   },
   {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
+    user: {
+      name: 'Harper Sunday',
+    },
+    urls: {
+      small: Img.harper,
+      download_location: Img.harper,
     },
   },
   {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
+    user: {
+      name: 'Céline',
+    },
+    urls: {
+      small: Img.céline,
+      download_location: Img.céline,
     },
   },
   {
-    photographer: 'Dominika Mazur',
-    src: {
-      original: Img.dominika,
-      large: Img.dominika,
+    user: {
+      name: 'Dominika Mazur',
+    },
+    urls: {
+      small: Img.dominika,
+      download_location: Img.dominika,
     },
   },
   {
-    photographer: 'Jessika Arraes',
-    src: {
-      original: Img.jessika,
-      large: Img.jessika,
+    user: {
+      name: 'Jessika Arraes',
+    },
+    urls: {
+      small: Img.jessika,
+      download_location: Img.jessika,
     },
   },
   {
-    photographer: 'Harper Sunday',
-    src: {
-      original: Img.harper,
-      large: Img.harper,
+    user: {
+      name: 'Harper Sunday',
+    },
+    urls: {
+      small: Img.harper,
+      download_location: Img.harper,
     },
   },
   {
-    photographer: 'Céline',
-    src: {
-      original: Img.céline,
-      large: Img.céline,
+    user: {
+      name: 'Céline',
+    },
+    urls: {
+      small: Img.céline,
+      download_location: Img.céline,
     },
   },
   {
-    photographer: 'Dominika Mazur',
-    src: {
-      original: Img.dominika,
-      large: Img.dominika,
+    user: {
+      name: 'Dominika Mazur',
+    },
+    urls: {
+      small: Img.dominika,
+      download_location: Img.dominika,
     },
   },
 ];
@@ -133,14 +165,15 @@ export default function useFetch() {
       const response = await fetch(url, overLoad);
       const data = await response.json();
       if (isNewSearch) {
-        dispatch(photoActions.setPhotos([...data.photos]));
+        dispatch(photoActions.setPhotos([...data['results']]));
       } else {
-        dispatch(photoActions.setPhotos([...currentPhotos, ...data.photos]));
+        dispatch(photoActions.setPhotos([...currentPhotos, ...data]));
       }
+      if (!response.ok) throw new Error(response);
 
       // dispatch(photoActions.setPhotos(test_photos));
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
       setHasError(true);
     }
     setIsLoading(false);

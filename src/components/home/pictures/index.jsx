@@ -18,8 +18,8 @@ export default function Pictures() {
     const currSearch = photo.currentSearch;
     const currSearchUrl =
       currSearch === ''
-        ? `https://api.pexels.com/v1/curated?page=${newPage}&per_page=${PER_PAGE_PHOTO_NUM}`
-        : `https://api.pexels.com/v1/search?query=${currSearch}&page=${newPage}&per_page=${PER_PAGE_PHOTO_NUM}`;
+        ? `https://api.unsplash.com/photos?page=${newPage}&per_page=${16}`
+        : `https://api.unsplash.com/search/photos?query=${currSearch}&page=${newPage}&per_page=${16}`;
 
     dispatch(photoActions.setPage(newPage));
     fetchData(currSearchUrl, OVERLOAD);
