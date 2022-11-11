@@ -27,18 +27,32 @@ export default function Picture({ photo }) {
         <s.Image src={photo.webformatURL} alt="" />
       </s.ImageWrapper>
       <s.TextContainer>
-        <p>
+        <li>
           Photo by <strong>{photo.user}</strong>
-        </p>
-        <p>
+        </li>
+        <li>
           Download Original Photo:
           <s.DownloadButton
             onClick={(event) => downloadPhoto(event, photo.largeImageURL)}
           >
             Here
           </s.DownloadButton>
-        </p>
+        </li>
+        <li className="info">
+          Views: <strong>{photo.views}</strong>
+        </li>
+        <li className="info">
+          Likes: <strong>{photo.likes}</strong>
+        </li>
+        <li className="info">
+          Downloads: <strong>{photo.downloads}</strong>
+        </li>
       </s.TextContainer>
+      <s.TagContainer>
+        {photo.tags.split(',').map((tag, index) => (
+          <li key={index}>{tag}</li>
+        ))}
+      </s.TagContainer>
     </s.Picture>
   );
 }

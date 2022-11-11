@@ -2,15 +2,20 @@ import styled from 'styled-components';
 import { Card } from 'styles/layout';
 
 export const Picture = styled(Card)`
-  width: 270px;
-  height: 380px;
+  min-height: 400px;
+  width: 280px;
+  height: 400px;
   margin: 1rem;
   padding: 1.25rem 0.5rem;
+
+  & > ul {
+    margin: 0.25rem auto;
+  }
 `;
 
 export const ImageWrapper = styled.figure`
   width: 100%;
-  height: 70%;
+  height: 55%;
   margin: 0 auto;
   overflow: hidden;
 `;
@@ -29,17 +34,33 @@ export const Image = styled.img`
   }
 `;
 
+export const TagContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 0.2rem;
+  font-size: ${(props) => props.theme.fontSizes.$xs};
+
+  li {
+    display: inline-block;
+    padding: 0.2rem;
+    margin: 0.15rem;
+    color: #ffffff;
+    background-color: #c7c7c7;
+    border-radius: 5px;
+  }
+`;
+
 export const TextContainer = styled.ul`
-  margin: 0.5rem auto;
   font-size: ${(props) => props.theme.fontSizes.$sm};
 
   li {
     padding: 0.25rem 0.75rem;
   }
 
-  #likes {
+  .info {
+    font-size: ${(props) => props.theme.fontSizes.$xs};
     font-weight: ${(props) => props.theme.fontWeights.bold};
-    color: #959595;
   }
 `;
 
