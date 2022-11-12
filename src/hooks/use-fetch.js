@@ -1,11 +1,11 @@
 import * as Img from 'images';
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { photoActions } from 'store/photo-slice';
 
 const test_photos = [
   {
+    id: 1,
     user: 'Céline',
     webformatURL: Img.jessika,
     largeImageURL: Img.jessika,
@@ -15,6 +15,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 2,
     user: 'Céline',
     webformatURL: Img.harper,
     largeImageURL: Img.harper,
@@ -24,6 +25,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 3,
     user: 'Céline',
     webformatURL: Img.céline,
     largeImageURL: Img.céline,
@@ -33,6 +35,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 4,
     user: 'Dominika Mazur',
     webformatURL: Img.dominika,
     largeImageURL: Img.dominika,
@@ -42,6 +45,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 5,
     user: 'Céline',
     webformatURL: Img.jessika,
     largeImageURL: Img.jessika,
@@ -51,6 +55,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 6,
     user: 'Céline',
     webformatURL: Img.harper,
     largeImageURL: Img.harper,
@@ -60,6 +65,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 7,
     user: 'Céline',
     webformatURL: Img.céline,
     largeImageURL: Img.céline,
@@ -69,6 +75,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 8,
     user: 'Dominika Mazur',
     webformatURL: Img.dominika,
     largeImageURL: Img.dominika,
@@ -78,6 +85,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 9,
     user: 'Céline',
     webformatURL: Img.jessika,
     largeImageURL: Img.jessika,
@@ -87,6 +95,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 10,
     user: 'Céline',
     webformatURL: Img.harper,
     largeImageURL: Img.harper,
@@ -96,6 +105,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 11,
     user: 'Céline',
     webformatURL: Img.céline,
     largeImageURL: Img.céline,
@@ -105,6 +115,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 12,
     user: 'Dominika Mazur',
     webformatURL: Img.dominika,
     largeImageURL: Img.dominika,
@@ -114,15 +125,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
-    user: 'Céline',
-    webformatURL: Img.jessika,
-    largeImageURL: Img.jessika,
-    views: 25,
-    likes: 100,
-    downloads: 100,
-    tags: 'a, b, c',
-  },
-  {
+    id: 13,
     user: 'Céline',
     webformatURL: Img.harper,
     largeImageURL: Img.harper,
@@ -132,6 +135,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 14,
     user: 'Céline',
     webformatURL: Img.céline,
     largeImageURL: Img.céline,
@@ -141,6 +145,7 @@ const test_photos = [
     tags: 'a, b, c',
   },
   {
+    id: 15,
     user: 'Dominika Mazur',
     webformatURL: Img.dominika,
     largeImageURL: Img.dominika,
