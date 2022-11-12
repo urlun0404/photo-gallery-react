@@ -1,12 +1,13 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import AboutPage from 'pages/about';
 import ErrorPage from 'pages/error';
-import PictureDetailsPage from 'pages/picture-details';
+import Footer from 'components/footer';
 import GlobalStyles from 'styles/global';
 import HomePage from 'pages/home';
 import { OVERLOAD } from 'constants';
 import { PIXABAY_ENDPOINT } from 'constants';
+import PictureDetailsPage from 'pages/picture-details';
 import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
 import useFetch from 'hooks/use-fetch';
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
+        <Footer />
       </ThemeProvider>
     </>
   );

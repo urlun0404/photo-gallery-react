@@ -63,15 +63,25 @@ module.exports = {
           publicPath: 'assets/images/',
           outputPath: 'assets/images/',
         },
+        dependency: { not: ['url'] },
       },
       {
         test: /\.svg$/,
-        type: 'asset/inline',
+        type: 'asset/resource',
         generator: {
           publicPath: 'assets/images/',
           outputPath: 'assets/images/',
         },
       },
+      // {
+      //   test: /\.svg$/i,
+      //   type: 'asset',
+      //   resourceQuery: /url/, // *.svg?url
+      // },
+      // {
+      //   test: /\.svg$/,
+      //   use: ['@svgr/webpack'],
+      // },
       {
         test: /\.(wott(2)?|eot|ttf|otf)$/,
         type: 'asset/inline',

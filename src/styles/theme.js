@@ -40,7 +40,7 @@ const theme = {
   },
   themes: {
     light: {
-      $primary: '#8328ce',
+      $primary: '#61468a',
       $primaryLight: '#c084fc',
       $primaryHover: '#561a87',
       $secondary: '#979797',
