@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'styles/layout';
+import { ThemeButton } from 'styles/layout';
 
 export const Search = styled.div`
   display: flex;
@@ -47,6 +47,6 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const SearchButton = styled(Button)`
+export const SearchButton = styled(ThemeButton)`
   font-weight: bold;
 `;

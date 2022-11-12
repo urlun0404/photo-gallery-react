@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'styles/layout';
+import { ThemeButton } from 'styles/layout';
 
 export const Container = styled.section`
   width: 100%;
@@ -35,7 +35,7 @@ export const SelectPerPageNum = styled.div`
   }
 `;
 
-export const LoadMoreButton = styled(Button)`
+export const LoadMoreButton = styled(ThemeButton)`
   display: block;
   margin: 1rem auto;
   font-size: 1.35rem;
