@@ -29,8 +29,13 @@ const theme = {
   },
   colors: {
     white: 'rgba(255,255,255, 1)',
+    white50: 'rgba(255,255,255, 0.5)',
+    white70: 'rgba(255,255,255, 0.7)',
+    black: 'rgba(0, 0, 0, 1)',
+    black10: 'rgba(0, 0, 0, 0.1)',
     black20: 'rgba(0, 0, 0, 0.2)',
     black30: 'rgba(0, 0, 0, 0.3)',
+    black50: 'rgba(0, 0, 0, 0.5)',
     black70: 'rgba(0, 0, 0, 0.7)',
   },
 };

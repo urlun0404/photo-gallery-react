@@ -1,38 +1,73 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ThemeButton } from 'styles/layout';
 
 export const Search = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   margin: 1.5rem 0;
+  transition: all ease-in 0.15s;
 
-  input,
-  button {
-    padding: 0.5rem 0.75rem;
-    margin: 0.5rem 0.75rem;
-    font-size: 1.25rem;
+  #search-input,
+  #search-btn,
+  #clear-input-btn {
     border-radius: 6px;
-    transition: all ease-in 0.15s;
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.$sm}) {
     flex-direction: column;
-  } ;
+  }
 `;
 
-export const SearchInput = styled.input`
-  border: 1.5px solid #c7c7c7;
+export const ClearInputButtonCss = css`
+  position: absolute;
+  right: 2.5px;
+  height: 70%;
+  margin: 0.25rem;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  color: ${(props) => props.theme.colors.black30};
+  background-color: ${(props) => props.theme.colors.white50};
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+    line-height: 1em;
+  }
 
   &:hover {
+    color: ${(props) => props.theme.colors.black50};
+    background-color: ${(props) => props.theme.colors.black10};
+  }
+`;
+
+export const SearchInput = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  max-width: 80%;
+
+  #search-input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: ${(props) => props.theme.fontSizes.$md};
+    border: 1.5px solid #c7c7c7;
+
+    &[placeholder] {
+      font-size: ${(props) => props.theme.fontSizes.$xs};
+    }
+  }
+
+  #search-input:hover {
     outline: #61468a42;
   }
 
-  &:focus {
+  #search-input:focus {
     border-color: #4f005f;
     background-color: #f6dbfc;
 
-    & + button {
+    & + #search-btn {
       background-color: #61468a;
     }
 
@@ -40,13 +75,20 @@ export const SearchInput = styled.input`
       border-color: #ff0000;
       background-color: #fbdada;
 
-      & + button {
+      & + #search-btn {
         background-color: #959595;
       }
     }
   }
+
+  #clear-input-btn {
+    ${ClearInputButtonCss}
+  }
 `;
 
 export const SearchButton = styled(ThemeButton)`
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0.75rem;
+  font-size: ${(props) => props.theme.fontSizes.$sm};
   font-weight: bold;
 `;

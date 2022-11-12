@@ -1,10 +1,12 @@
 import * as s from './styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { photoActions } from 'store/photo-slice';
-import { useState, useEffect } from 'react';
-import useFetch from 'hooks/use-fetch';
-import { PIXABAY_ENDPOINT } from 'constants';
+import { useEffect, useState } from 'react';
+import { IoIosClose } from 'react-icons/io';
 import { OVERLOAD } from 'constants';
+import { PIXABAY_ENDPOINT } from 'constants';
+import { photoActions } from 'store/photo-slice';
+import useFetch from 'hooks/use-fetch';
+import { CloseCircleButton } from 'components/layout/buttons';
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -14,6 +16,11 @@ export default function SearchBar() {
 
   const inputHandler = (event) => {
     setSearchInput(event.target.value);
+  };
+
+  const clearSearchInput = (event) => {
+    event.preventDefault();
+    setSearchInput('');
   };
 
   const searchPhotos = (event) => {
@@ -50,13 +57,28 @@ export default function SearchBar() {
 
   return (
     <s.Search>
-      <s.SearchInput
-        type="text"
-        value={searchInput}
-        onChange={inputHandler}
-        className={`${searchInput.trim() !== '' ? 'isActive' : 'isInvalid'}`}
-      />
-      <s.SearchButton onClick={searchPhotos}>Search</s.SearchButton>
+      <s.SearchInput>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Please Enter Something for Search"
+          value={searchInput}
+          onChange={inputHandler}
+          className={`${searchInput.trim() !== '' ? 'isActive' : 'isInvalid'}`}
+        />
+        <CloseCircleButton
+          id="clear-input-btn"
+          onClick={clearSearchInput}
+          title="Clear Current Search"
+        />
+      </s.SearchInput>
+      <s.SearchButton
+        id="search-btn"
+        title="Submit Current Search"
+        onClick={searchPhotos}
+      >
+        Search
+      </s.SearchButton>
     </s.Search>
   );
 }

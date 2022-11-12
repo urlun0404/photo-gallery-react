@@ -1,10 +1,10 @@
 import * as s from './styles';
 import { IoIosClose } from 'react-icons/io';
 
-export const CloseCircleButton = function () {
+export const CloseCircleButton = function (props) {
   return (
-    <s.CloseCircleButton id="close-circle-btn">
-      <IoIosClose id="close-circle-icon" />
+    <s.CloseCircleButton {...props}>
+      <IoIosClose />
     </s.CloseCircleButton>
   );
 };
