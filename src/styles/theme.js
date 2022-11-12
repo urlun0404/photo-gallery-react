@@ -38,6 +38,22 @@ const theme = {
     black50: 'rgba(0, 0, 0, 0.5)',
     black70: 'rgba(0, 0, 0, 0.7)',
   },
+  themes: {
+    light: {
+      $primary: '#8328ce',
+      $primaryLight: '#c084fc',
+      $primaryHover: '#561a87',
+      $secondary: '#979797',
+      $secondaryLight: '#cecece',
+      $secondaryDark: ' #505050',
+      $info: '#2563eb',
+      $success: '#16a34a',
+      $warn: '#FBBD23',
+      $error: '#f43f5e',
+      $errorLight: '#fbdada',
+      $text: '#000000',
+    },
+  },
 };
 
 export default theme;

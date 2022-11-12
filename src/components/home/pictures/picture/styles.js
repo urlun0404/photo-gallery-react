@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Card } from 'styles/layout';
+import { Card, ThemeButton } from 'styles/layout';
 
 export const Picture = styled(Card)`
   min-height: 400px;
@@ -14,10 +14,28 @@ export const Picture = styled(Card)`
 `;
 
 export const ImageWrapper = styled.figure`
+  position: relative;
   width: 100%;
   height: 55%;
   margin: 0 auto;
   overflow: hidden;
+
+  #details-btn {
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.white70};
+
+    img {
+      transform: scale(1.25);
+      opacity: 0.3;
+    }
+
+    #details-btn {
+      opacity: 1;
+    }
+  }
 `;
 
 export const Image = styled.img`
@@ -27,11 +45,18 @@ export const Image = styled.img`
   margin: 0 auto;
   object-fit: contain;
   object-position: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-in;
+`;
 
-  &:hover {
-    transform: scale(1.25);
-  }
+export const DetailsButton = styled(ThemeButton)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0.5rem 0.75rem;
+  margin: 0;
+  font-size: ${(props) => props.theme.fontSizes.$sm};
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in;
 `;
 
 export const TagContainer = styled.ul`

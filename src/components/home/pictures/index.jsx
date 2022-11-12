@@ -59,14 +59,8 @@ const Pictures = React.memo(function () {
           <h3>Opps! Something Goes Wrong!</h3>
         ) : (
           photo.photos &&
-          photo.photos.map((photo, index) => {
-            return (
-              <Picture
-                key={photo.id || index}
-                className="picture"
-                photo={photo}
-              />
-            );
+          photo.photos.map((photo) => {
+            return <Picture key={photo.id} className="picture" photo={photo} />;
           })
         )}
       </s.Pictures>

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import * as s from './styles';
 
 const downloadPhoto = async function (event, url) {
@@ -21,10 +22,22 @@ const downloadPhoto = async function (event, url) {
 };
 
 export default function Picture({ photo }) {
+  const navigate = useNavigate();
+
+  const clickDetailsBtn = (event) => {
+    event.preventDefault();
+    navigate(`/${photo.id}`, {
+      state: { photo: photo },
+    });
+  };
+
   return (
     <s.Picture>
       <s.ImageWrapper className="card">
         <s.Image src={photo.webformatURL} alt="" />
+        <s.DetailsButton id="details-btn" onClick={clickDetailsBtn}>
+          Details
+        </s.DetailsButton>
       </s.ImageWrapper>
       <s.TextContainer>
         <li>

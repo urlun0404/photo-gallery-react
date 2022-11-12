@@ -35,11 +35,8 @@ export default function App() {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path="/">
-            <Route index element={<Navigate to="/pictures" replace />} />
-            <Route path="pictures" element={<HomePage />}>
-              <Route path=":pictureId" element={<PictureDetailsPage />} />
-            </Route>
+          <Route path="/" element={<HomePage />}>
+            <Route path=":pictureId" element={<PictureDetailsPage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Route>

@@ -23,6 +23,15 @@ export const ThemeButton = styled.button`
   }
 `;
 
+export const Portal = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+`;
+
 export const Card = styled.div`
   border-radius: 8px;
   box-shadow: 3px 3px 5px rgba(87, 87, 87, 0.7);
