@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Layout = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
 export const Header = styled.header`
   width: 100%;
   text-align: center;
