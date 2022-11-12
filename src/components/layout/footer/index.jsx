@@ -1,5 +1,5 @@
 import * as s from './styles';
-import pixabay from 'images/pixabay-logo.svg?url';
+import pixabay from 'images/pixabay-logo.svg';
 
 export default function Footer() {
   return (
