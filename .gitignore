@@ -131,7 +131,7 @@ dist
 
 # Picture
 .Identifier
-.jfif
+*.jfif
 
 #
 build/

@@ -27,7 +27,12 @@ const theme = {
     extraBold: '800',
     black: '900',
   },
-  colors: {},
+  colors: {
+    white: 'rgba(255,255,255, 1)',
+    black20: 'rgba(0, 0, 0, 0.2)',
+    black30: 'rgba(0, 0, 0, 0.3)',
+    black70: 'rgba(0, 0, 0, 0.7)',
+  },
 };
 
 export default theme;

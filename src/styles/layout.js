@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import theme from 'styles/theme';
 
-export const Button = styled.button`
+export const ThemeButton = styled.button`
   padding: 0.75rem;
   margin: 0.5rem 0;
   font-weight: bolder;
@@ -25,4 +26,21 @@ export const Button = styled.button`
 export const Card = styled.div`
   border-radius: 8px;
   box-shadow: 3px 3px 5px rgba(87, 87, 87, 0.7);
+`;
+
+export const Dialog = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: ${theme.colors.white};
+`;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: ${theme.colors.black70};
 `;
