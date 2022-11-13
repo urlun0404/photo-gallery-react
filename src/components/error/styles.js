@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export const Error = styled.section`
+export const Error = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -13,6 +12,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   grid-row-gap: 10px;
+  justify-content: center;
   justify-items: center;
   align-items: center;
 `;
