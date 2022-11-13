@@ -2,7 +2,7 @@
 
 A photo gallery webstie mainly built with React and [pixabay](https://pixabay.com) authorized API that provides best photos for searching and download.
 
-<img src="https://github.com/urlun0404/Photo-Gallery-React/blob/main/photo-gallery-website.jpg?raw=true" alt="photo gallery webstie" style="width: 500px;"/>
+<img src="https://github.com/urlun0404/photo-gallery-react/blob/main/src/assets/images/photo-gallery-website.jpg?raw=true" alt="photo gallery webstie" style="width: 500px;"/>
 
 ## Technique
 
