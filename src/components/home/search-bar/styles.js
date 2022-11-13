@@ -52,7 +52,7 @@ export const SearchInput = styled.div`
     width: 100%;
     padding: 0.5rem;
     font-size: ${(props) => props.theme.fontSizes.$md};
-    border: 1.5px solid #c7c7c7;
+    border: 1.5px solid ${(props) => props.theme.themes.light.$secondaryLight};
 
     &[placeholder] {
       font-size: ${(props) => props.theme.fontSizes.$xs};
@@ -60,23 +60,23 @@ export const SearchInput = styled.div`
   }
 
   #search-input:hover {
-    outline: #61468a42;
+    outline: ${(props) => props.theme.themes.light.$primaryHover};
   }
 
   #search-input:focus {
-    border-color: #4f005f;
-    background-color: #f6dbfc;
+    border-color: ${(props) => props.theme.themes.light.$primaryHover};
+    background-color: ${(props) => props.theme.themes.light.$primaryFocusLight};
 
     & + #search-btn {
-      background-color: #61468a;
+      background-color: ${(props) => props.theme.themes.light.$primary};
     }
 
     &.isInvalid {
-      border-color: #ff0000;
-      background-color: #fbdada;
+      border-color: ${(props) => props.theme.themes.light.$error};
+      background-color: ${(props) => props.theme.themes.light.$errorLight};
 
       & + #search-btn {
-        background-color: #959595;
+        background-color: ${(props) => props.theme.themes.light.$secondary};
       }
     }
   }

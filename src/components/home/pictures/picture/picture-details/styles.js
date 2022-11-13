@@ -7,6 +7,7 @@ export const Portal = styled(L.Portal)`
 
 export const Dialog = styled(L.Dialog)`
   position: absolute;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -15,7 +16,7 @@ export const Dialog = styled(L.Dialog)`
   width: 85%;
   height: 90%;
   padding: 40px 10px 20px;
-  z-index: 100;
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 10px;
   overflow-x: hidden;
 
@@ -39,7 +40,7 @@ export const Dialog = styled(L.Dialog)`
 
     &:hover {
       color: ${(props) => props.theme.colors.black};
-      background-color: ${(props) => props.theme.themes.light.$secondaryDark};
+      background-color: ${(props) => props.theme.colors.black30};
       transform: scale(1.25);
     }
   }

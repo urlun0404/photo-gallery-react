@@ -43,6 +43,7 @@ const theme = {
       $primary: '#61468a',
       $primaryLight: '#c084fc',
       $primaryHover: '#561a87',
+      $primaryFocusLight: '#f6dbfc',
       $secondary: '#979797',
       $secondaryLight: '#cecece',
       $secondaryDark: ' #505050',

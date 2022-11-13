@@ -29,8 +29,8 @@ export const SelectPerPageNum = styled.div`
 
   select {
     width: 100px;
-    background-color: #c7c7c7;
-    border: 1.5px solid #959595;
+    background-color: ${(props) => props.theme.themes.light.$secondaryLight};
+    border: 1.5px solid ${(props) => props.theme.themes.light.$secondary};
     border-radius: 5px;
   }
 `;

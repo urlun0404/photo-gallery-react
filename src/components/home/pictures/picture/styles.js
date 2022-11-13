@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Card, ThemeButton } from 'styles/layout';
+import styled from 'styled-components';
 
 export const Picture = styled(Card)`
   min-height: 400px;
@@ -70,8 +70,8 @@ export const TagContainer = styled.ul`
     display: inline-block;
     padding: 0.2rem;
     margin: 0.15rem;
-    color: #ffffff;
-    background-color: #c7c7c7;
+    color: ${(props) => props.theme.colors.white};
+    background-color: ${(props) => props.theme.themes.light.$secondaryLight};
     border-radius: 5px;
   }
 `;
@@ -96,6 +96,6 @@ export const DownloadButton = styled.button`
   transition: all 0.1s ease-in;
 
   &:hover {
-    color: #e60000;
+    color: ${(props) => props.theme.themes.light.$error};
   }
 `;

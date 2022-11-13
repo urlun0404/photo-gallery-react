@@ -6,10 +6,10 @@ export const Nav = styled.li`
   transition: all ease-in 0.2s;
 
   a {
-    color: #ffffff;
+    color: ${(props) => props.theme.colors.white};
   }
 
   &:hover {
-    background-color: #966dd8;
+    background-color: ${(props) => props.theme.themes.light.$primaryLight};
   }
 `;

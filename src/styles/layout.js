@@ -4,22 +4,22 @@ import theme from 'styles/theme';
 export const ThemeButton = styled.button`
   padding: 0.75rem;
   margin: 0.5rem 0;
-  font-weight: bolder;
-  color: #ffffff;
-  background-color: #959595;
+  font-weight: ${theme.fontWeights.bold};
+  color: ${theme.colors.white};
+  background-color: ${theme.themes.light.$secondary};
   border-radius: 6px;
 
   font-size: 1rem;
-  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 8px ${theme.themes.light.$secondaryLight};
   transition: all ease-in 0.1s;
 
   &:hover {
-    background-color: #61468a;
+    background-color: ${theme.themes.light.$primary};
   }
 
   &:active {
     transform: scale(0.95);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 3px 8px ${theme.themes.light.$secondaryLight};
   }
 `;
 
@@ -34,7 +34,7 @@ export const Portal = styled.div`
 
 export const Card = styled.div`
   border-radius: 8px;
-  box-shadow: 3px 3px 5px rgba(87, 87, 87, 0.7);
+  box-shadow: 3px 3px 5px ${theme.themes.light.$secondaryDark};
 `;
 
 export const Dialog = styled.div`
@@ -42,7 +42,7 @@ export const Dialog = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: ${theme.colors.white};
+  background-color: ${theme.themes.light.$secondary};
 `;
 
 export const Overlay = styled.div`
