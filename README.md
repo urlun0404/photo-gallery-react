@@ -9,8 +9,9 @@ A photo gallery webstie mainly built with React and [pixabay](https://pixabay.co
 - API: [pixabay API](https://pixabay.com/api/ 'pixabay API docs')
 - View: [React](https://reactjs.org/ 'React official website')
 - Styling: [styled-components](https://styled-components.com/ 'styled components official website')
-- Router: [React Router Dom (v6.3.0)]( 'React Router Dom v6.3.0 docs')
-- Bundler: [webpack 5](https://webpack.js.org/)
+- Router: [React Router Dom (v6.3.0)](https://reactrouter.com/en/v6.3.0 'React Router Dom v6.3.0 docs')
+- Global state management: [Redux](https://redux.js.org/ 'Redux webstie')
+- Bundler: [webpack 5](https://webpack.js.org/ 'webpack website')
 
 ## Features
 
@@ -23,7 +24,7 @@ The following features are what you can do on this website:
 
 ## Live Demo
 
-[Live Demo on Vercel (in progress)](#)
+[Live Demo on Vercel](#)
 
 ## To Do
 
