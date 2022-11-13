@@ -29,6 +29,10 @@ export default function App() {
     fetchData(initialSearchUrl, OVERLOAD, true);
   }, []);
 
+  useEffect(() => {
+    console.warn('app: ', isLoading, hasError, errorMessages);
+  }, [isLoading, hasError, errorMessages]);
+
   return (
     <>
       <GlobalStyles />

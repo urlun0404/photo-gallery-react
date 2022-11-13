@@ -161,8 +161,8 @@ export default function useFetch() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [errorMessages, setErrorMessages] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fetchData = useCallback(async (url, overLoad, isNewSearch = false) => {
     setHasError(false);
@@ -170,16 +170,17 @@ export default function useFetch() {
     try {
       const response = await fetch(url, overLoad);
       const data = await response.json();
-      console.log(data);
-      dispatch(
-        photoActions.setPhotos({
-          isNewSearch,
-          newPhotos: data['hits'],
-        }),
-      );
+      // console.log(data);
       if (!response.ok || Number(data['total']) === 0) {
         throw new Error(
           response.statusText || "Couldn't find any matched photos",
+        );
+      } else {
+        dispatch(
+          photoActions.setPhotos({
+            isNewSearch,
+            newPhotos: data['hits'],
+          }),
         );
       }
       // dispatch(
@@ -191,6 +192,7 @@ export default function useFetch() {
     } catch (err) {
       setHasError(true);
       setErrorMessages(err);
+      navigate('/error');
       console.error(err);
     }
     setIsLoading(false);

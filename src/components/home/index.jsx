@@ -1,4 +1,5 @@
 import * as s from './styles';
+import SearchBar from 'components/home/search-bar';
 import Pictures from 'components/home/pictures';
 
 export default function Home({ status }) {
@@ -7,7 +8,10 @@ export default function Home({ status }) {
       {status.isLoading ? (
         <s.Loading>Is Loading...</s.Loading>
       ) : (
-        !status.hasError && <Pictures />
+        <>
+          <SearchBar />
+          {!status.hasError && <Pictures />}
+        </>
       )}
     </s.Container>
   );
