@@ -2,6 +2,7 @@ import * as Img from 'images';
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { photoActions } from 'store/photo-slice';
+import { useNavigate } from 'react-router-dom';
 
 const test_photos = [
   {
@@ -159,6 +160,8 @@ const test_photos = [
 export default function useFetch() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [errorMessages, setErrorMessages] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const fetchData = useCallback(async (url, overLoad, isNewSearch = false) => {
@@ -167,13 +170,18 @@ export default function useFetch() {
     try {
       const response = await fetch(url, overLoad);
       const data = await response.json();
+      console.log(data);
       dispatch(
         photoActions.setPhotos({
           isNewSearch,
           newPhotos: data['hits'],
         }),
       );
-      if (!response.ok) throw new Error(response);
+      if (!response.ok || Number(data['total']) === 0) {
+        throw new Error(
+          response.statusText || "Couldn't find any matched photos",
+        );
+      }
       // dispatch(
       //   photoActions.setPhotos({
       //     isNewSearch,
@@ -181,8 +189,9 @@ export default function useFetch() {
       //   }),
       // );
     } catch (err) {
-      console.error(err);
       setHasError(true);
+      setErrorMessages(err);
+      console.error(err);
     }
     setIsLoading(false);
   }, []);
@@ -190,6 +199,7 @@ export default function useFetch() {
   return {
     isLoading,
     hasError,
+    errorMessages,
     fetchData,
   };
 }
