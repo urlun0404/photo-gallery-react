@@ -168,7 +168,7 @@ export default function useFetch() {
     setHasError(false);
     setIsLoading(true);
     try {
-      const response = await fetch(url, overLoad);
+      // const response = await fetch(url, overLoad);
       const data = await response.json();
       // console.log(data);
       if (!response.ok || Number(data['total']) === 0) {
@@ -192,7 +192,7 @@ export default function useFetch() {
     } catch (err) {
       setHasError(true);
       setErrorMessages(err);
-      navigate('/error');
+      // navigate('/error');
       console.error(err);
     }
     setIsLoading(false);
