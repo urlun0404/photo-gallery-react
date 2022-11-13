@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Nav = styled.li`
+  height: 100%;
   padding: 0.75rem 1.75rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   transition: all ease-in 0.2s;
 
   a {
