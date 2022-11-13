@@ -1,8 +1,7 @@
 import ReactDOM from 'react-dom';
 import * as s from './styles';
 import { CloseCircleButton } from 'components/layout/buttons';
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function PictureDetails() {
   const {

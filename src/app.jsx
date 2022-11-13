@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import AboutPage from 'pages/about';
 import ErrorPage from 'pages/error';
 import GlobalStyles from 'styles/global';
@@ -17,18 +17,16 @@ let init = false;
 const initialSearchUrl = `${PIXABAY_ENDPOINT}&page=${1}&per_page=${15}`;
 
 export default function App() {
-  const { fetchData } = useFetch();
-  const [error, setError] = useState(null);
+  const { isLoading, hasError, errorMessages, fetchData } = useFetch();
+  const status = useMemo(() => {
+    return { isLoading, hasError, errorMessages };
+  }, [isLoading, hasError, errorMessages]);
 
   // Fetch initial photo data when the page loads up
   useEffect(() => {
-    try {
-      if (init) return;
-      init = true;
-      fetchData(initialSearchUrl, OVERLOAD, true);
-    } catch (err) {
-      setError(err);
-    }
+    if (init) return;
+    init = true;
+    fetchData(initialSearchUrl, OVERLOAD, true);
   }, []);
 
   return (
@@ -37,11 +35,15 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <Layout>
           <Routes>
-            <Route path="/" element={<HomePage />}>
-              <Route path=":pictureId" element={<PictureDetailsPage />} />
-              <Route path="about" element={<AboutPage />} />
-              <Route path="*" element={<ErrorPage />} />
+            <Route path="/" element={<HomePage status={status} />}>
+              <Route
+                path="/pictures/:pictureId"
+                element={<PictureDetailsPage />}
+              />
             </Route>
+            <Route path="about" element={<AboutPage />} />
+            <Route path="error" element={<ErrorPage status={status} />} />
+            <Route path="*" element={<ErrorPage status={status} />} />
           </Routes>
         </Layout>
       </ThemeProvider>

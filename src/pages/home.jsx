@@ -1,13 +1,5 @@
-import SearchBar from 'components/home/search-bar';
-import Pictures from 'components/home/pictures';
-import { Outlet } from 'react-router-dom';
+import Home from 'components/home';
 
-export default function HomePage() {
-  return (
-    <>
-      <SearchBar />
-      <Pictures />
-      <Outlet />
-    </>
-  );
+export default function HomePage(props) {
+  return <Home {...props} />;
 }

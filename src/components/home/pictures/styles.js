@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { ThemeButton } from 'styles/layout';
 
-export const Container = styled.section`
-  width: 100%;
-  padding: 0.75rem 0.5rem;
-`;
-
 export const Pictures = styled.div`
   display: flex;
   flex-wrap: wrap;

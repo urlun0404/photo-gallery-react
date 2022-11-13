@@ -26,7 +26,7 @@ export default function Picture({ photo }) {
 
   const clickDetailsBtn = (event) => {
     event.preventDefault();
-    navigate(`/${photo.id}`, {
+    navigate(`/pictures/${photo.id}`, {
       state: { photo: photo },
     });
   };

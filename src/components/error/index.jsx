@@ -1,11 +1,22 @@
 import * as s from './styles';
 import { FaRegSadTear } from 'react-icons/fa';
+import { ImSad } from 'react-icons/im';
+import useFetch from 'hooks/use-fetch';
 
-export default function Error(props) {
-  console.error(props.error);
+export default function Error() {
+  const { hasError, errorMessages } = useFetch();
 
-  if (props.error) {
-    return <s.Title>{props.error}</s.Title>;
+  if (hasError) {
+    return (
+      <s.Error>
+        <s.Container>
+          <s.Title>{errorMessages}</s.Title>
+          <s.Image>
+            <ImSad />
+          </s.Image>
+        </s.Container>
+      </s.Error>
+    );
   } else {
     return (
       <s.Error>

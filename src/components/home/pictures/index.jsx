@@ -1,15 +1,17 @@
 import * as s from './styles';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { OVERLOAD } from 'constants';
+import { Outlet } from 'react-router-dom';
 import { PIXABAY_ENDPOINT } from 'constants';
 import Picture from './picture';
+import React from 'react';
+import SearchBar from 'components/home/search-bar';
 import { photoActions } from 'store/photo-slice';
+import { useDispatch, useSelector } from 'react-redux';
 import useFetch from 'hooks/use-fetch';
 
 const Pictures = React.memo(function () {
+  const { fetchData } = useFetch();
   const dispatch = useDispatch();
-  const { isLoading, hasError, fetchData } = useFetch();
   const photo = useSelector((state) => state.photo);
 
   const selectPerPagePhotoNum = (event) => {
@@ -31,19 +33,20 @@ const Pictures = React.memo(function () {
   const loadMorePhotos = (event) => {
     event.preventDefault();
     const newPage = photo.page + 1;
-    const currSearch = photo.currentSearch;
+    dispatch(photoActions.setPage(newPage));
 
+    const currSearch = photo.currentSearch;
     const currSearchUrl =
       currSearch === ''
         ? `${PIXABAY_ENDPOINT}&page=${newPage}&per_page=${photo.perPagePhotoNum}`
         : `${PIXABAY_ENDPOINT}&q=${currSearch}&page=${newPage}&per_page=${photo.perPagePhotoNum}`;
 
-    dispatch(photoActions.setPage(newPage));
     fetchData(currSearchUrl, OVERLOAD);
   };
 
   return (
-    <s.Container>
+    <>
+      <SearchBar />
       <s.SelectPerPageNum>
         <label htmlFor="select-photo-num">
           Show the Number of Photos Per Page:
@@ -54,21 +57,14 @@ const Pictures = React.memo(function () {
         </select>
       </s.SelectPerPageNum>
       <s.Pictures>
-        {isLoading && <h3>Loading...</h3>}
-        {!isLoading && hasError ? (
-          <h3>Opps! Something Goes Wrong!</h3>
-        ) : (
-          photo.photos &&
-          photo.photos.map((photo) => {
-            return <Picture key={photo.id} className="picture" photo={photo} />;
-          })
-        )}
+        {photo.photos.length !== 0 &&
+          photo.photos.map((photo) => (
+            <Picture key={photo.id} className="picture" photo={photo} />
+          ))}
+        <Outlet />
       </s.Pictures>
-      {!isLoading && !hasError && (
-        <s.LoadMoreButton onClick={loadMorePhotos}>Load More</s.LoadMoreButton>
-      )}
-    </s.Container>
+      <s.LoadMoreButton onClick={loadMorePhotos}>Load More</s.LoadMoreButton>
+    </>
   );
 });
-
 export default Pictures;
