@@ -1,3 +1,4 @@
+import About from 'components/about';
 export default function AboutPage() {
-  return <>ABOUT</>;
+  return <About />;
 }
