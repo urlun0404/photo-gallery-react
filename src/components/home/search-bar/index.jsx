@@ -1,7 +1,6 @@
 import * as s from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { IoIosClose } from 'react-icons/io';
 import { OVERLOAD } from 'constants';
 import { PIXABAY_ENDPOINT } from 'constants';
 import { photoActions } from 'store/photo-slice';
@@ -25,10 +24,7 @@ export default function SearchBar() {
 
   const searchPhotos = (event) => {
     event.preventDefault();
-    if (searchInput == '' || searchInput === photo.currentSearch) return;
-
-    // Record current searched result
-    dispatch(photoActions.setCurrentSearch(searchInput));
+    if (searchInput == '') return;
 
     // Fetch data from new searched result
     const searchInputUrl = `${PIXABAY_ENDPOINT}&q=${searchInput}&page=${1}&per_page=${
@@ -36,6 +32,9 @@ export default function SearchBar() {
     }`;
 
     fetchData(searchInputUrl, OVERLOAD, true);
+
+    // Record current searched result
+    dispatch(photoActions.setCurrentSearch(searchInput));
 
     // Clear search bar after searching
     setSearchInput('');
