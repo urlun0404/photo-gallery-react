@@ -45,7 +45,7 @@ export const Image = styled.img`
   margin: 0 auto;
   object-fit: contain;
   object-position: center;
-  transition: all 0.2s ease-in;
+  transition: all ease-in 0.2s;
 `;
 
 export const DetailsButton = styled(ThemeButton)`
@@ -56,7 +56,11 @@ export const DetailsButton = styled(ThemeButton)`
   margin: 0;
   font-size: ${(props) => props.theme.fontSizes.$sm};
   transform: translate(-50%, -50%);
-  transition: all 0.3s ease-in;
+  transition: all ease-in 0.3s;
+
+  &:active {
+    transform: scale(0.9) translate(-50%, -50%);
+  }
 `;
 
 export const TagContainer = styled.ul`
@@ -93,7 +97,7 @@ export const DownloadButton = styled.button`
   margin: 0 0.25rem;
   font-weight: ${(props) => props.theme.fontWeights.bold};
   text-decoration: underline;
-  transition: all 0.1s ease-in;
+  transition: all ease-in 0.1s;
 
   &:hover {
     color: ${(props) => props.theme.themes.light.$error};
