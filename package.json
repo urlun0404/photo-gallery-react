@@ -8,6 +8,7 @@
     "build": "webpack --mode=production --config webpack.config.js --env MODE=production",
     "dev": "webpack serve --mode development"
   },
+  "homepage": "https://photo-gallery-react-gamma.vercel.app/",
   "keywords": [],
   "author": "",
   "license": "ISC",
