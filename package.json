@@ -36,7 +36,8 @@
     "react-is": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "6.3.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "vercel": "^28.5.1"
   },
   "resolutions": {
     "styled-components": "^5"
