@@ -24,7 +24,7 @@ The following features are what you can do on this website:
 
 ## Live Demo
 
-[Live Demo on Vercel](#)
+[Live Demo on Vercel](https://photo-gallery-react-gamma.vercel.app/)
 
 ## To Do
 
@@ -32,8 +32,9 @@ The following features are what you can do on this website:
 - Download any size (width) of photo (in progress)
 - Build member system for saving photos by using firebase
 - Update React-Router-Dom to the latest version
+- Code splitting for production mode
 - Update bookmark icon
 
 ## Author
 
-[You-Lun, Lin](#)
+[You-Lun, Lin](https://portfolio-next-jet.vercel.app/)
