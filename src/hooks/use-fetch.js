@@ -1,4 +1,3 @@
-import * as Img from 'images';
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { photoActions } from 'store/photo-slice';
