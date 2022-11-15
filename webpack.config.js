@@ -73,15 +73,6 @@ module.exports = {
           outputPath: 'assets/images/',
         },
       },
-      // {
-      //   test: /\.svg$/i,
-      //   type: 'asset',
-      //   resourceQuery: /url/, // *.svg?url
-      // },
-      // {
-      //   test: /\.svg$/,
-      //   use: ['@svgr/webpack'],
-      // },
       {
         test: /\.(wott(2)?|eot|ttf|otf)$/,
         type: 'asset/inline',
@@ -93,9 +84,8 @@ module.exports = {
     ],
   },
 
-  // Pass all files through Babel
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx'], // Pass all files through Babel
     alias: {
       components: path.resolve(__dirname, './src/components'),
       constants: path.resolve(__dirname, './src/constants.js'),
