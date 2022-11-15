@@ -7,14 +7,14 @@ module.exports = {
     bundle: path.resolve(__dirname, 'src/index.js'),
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'public'),
     filename: '[name].[contenthash].js',
     assetModuleFilename: '[name][ext]',
     clean: true,
     publicPath: '/',
   },
   devServer: {
-    static: { directory: path.resolve(__dirname, 'build') },
+    static: { directory: path.resolve(__dirname, 'public') },
     hot: true,
     proxy: {
       '/api': {
